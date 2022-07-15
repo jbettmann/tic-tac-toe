@@ -1,13 +1,14 @@
 :root {
   --text: aquamarine;
-  --border: indianred;
+  --border: rgb(245, 100, 100);
+  --background: #282929;
 }
 
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: black;
+  background-color: var(--background);
 }
 #board {
   display: grid;
@@ -19,7 +20,6 @@ body {
 
 h1 {
   color: var(--text);
-  
 }
 
 .tile {
@@ -27,22 +27,21 @@ h1 {
   justify-content: center;
   align-items: center;
   color: var(--text);
- 
-  font-size: 2em;;
+  font-size: 2em;
 }
 
 .right-border {
-  border-right: 0.2em solid var(--border); 
+  border-right: 0.2em solid var(--border);
+
 }
 
-
 .bottom-border {
-  border-bottom: 0.2em solid var(--border); 
+  border-bottom: 0.2em solid var(--border);
 }
 
 .strike {
   position: absolute;
-  background-color: darkred;
+  background-color: var(--text);
 }
 
 .strike-row-1 {
@@ -79,58 +78,67 @@ h1 {
 }
 
 .strike-diagonal-1 {
- width: 90%;
- height: 4px;
- top: 50%;
- left: 5%;
- transform: skewY(45deg);
+  width: 90%;
+  height: 4px;
+  top: 50%;
+  left: 4%;
+  transform: skewY(45deg);
 }
 
 .strike-diagonal-2 {
   width: 90%;
   height: 4px;
   top: 50%;
-  left: 5%;
-  transform: skewY(-45deg);
- }
+  left: 3.1%;
+  transform: skewY(-45.5deg);
+}
 
- #game-over-area {
+#game-over-area {
   text-align: center;
   border: var(--border) 8px solid;
   padding: 50px;
   width: 50%;
   margin-top: 50px;
- }
+}
 
- #game-over-text {
+#game-over-text {
   color: var(--text);
   font-size: 2em;
   margin-top: 0;
- }
+}
 
- #play-again {
-  background-color: var(--text);
-  color: black;
-  border: var(--text) 1px  solid;
+#play-again {
+  background-color: #282929;
+  color: var(--text);
+  border: var(--text) 1px solid;
+  border-radius: 20px;
   padding: 10px;
-  font-size: 1.5em;
- }
+  font-size: 1em;
+  transition: all .2s, transform 1.5s ease-out;
+}
 
- .hidden {
+#play-again:hover, .play-again:focus {
+  background-color: var(--text);
+  color: var(--background);
+  filter: drop-shadow(0 1px 3px rgb(54, 162, 126));
+  cursor: pointer;
+  transform: rotate(360deg);
+}
+
+.hidden {
   display: none;
- }
+}
 
- .visible {
+.visible {
   display: block;
- }
+}
 
- .x-hover:hover::after {
+.x-hover:hover::after {
   content: "X";
   opacity: 0.4;
- }
+}
 
- .o-hover:hover::after {
+.o-hover:hover::after {
   content: "O";
   opacity: 0.4;
-
- }
+}
